@@ -1,5 +1,8 @@
+require("dotenv").config();
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+
+const secret = process.env.JWT_SECRET;
 
 exports.register = async (req, res) => {
   const { username, password } = req.body;
@@ -22,10 +25,17 @@ exports.login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ id: user._id }, "your_jwt_secret", {
+    const token = jwt.sign({ id: user._id, username: user.username }, secret, {
       expiresIn: "1h",
     });
-    res.status(200).json({ token });
+
+    const userInfo = {
+      username: user.username,
+      email: user.email,
+      fullName: user.fullName,
+    };
+
+    res.status(200).json({ token, userInfo });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -33,4 +43,30 @@ exports.login = async (req, res) => {
 
 exports.logout = (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
+};
+
+exports.updateUserInfo = async (req, res) => {
+  const { email, fullName } = req.body;
+  const { username } = req.user;
+
+  try {
+    const user = await User.findOneAndUpdate(
+      { username: username },
+      { email: email, fullName: fullName },
+      { new: true }
+    );
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.status(200).json({
+      message: "User information updated successfully",
+      userInfo: {
+        username: user.username,
+        email: user.email,
+        fullName: user.fullName,
+      },
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
