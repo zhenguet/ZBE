@@ -2,6 +2,7 @@ const register = require("./auth/register");
 const login = require("./auth/login");
 const logout = require("./auth/logout");
 const update = require("./auth/update");
+const getAllUsers = require("./auth/getAllUsers");
 
 const swaggerDocument = {
   openapi: "3.0.0",
@@ -20,6 +21,7 @@ const swaggerDocument = {
     ...login,
     ...logout,
     ...update,
+    ...getAllUsers,
   },
 };
 
