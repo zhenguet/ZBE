@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const { swaggerUi, swaggerDocs } = require("./swagger");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger"); // Import Swagger
 
 const PORT = process.env.PORT || 1403;
 const MONGO_URI =
@@ -17,6 +18,6 @@ app.use(express.json());
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
