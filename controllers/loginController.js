@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+const Token = require("../models/Token");
 
 exports.login = async (req, res) => {
   const { username, password } = req.body;
@@ -16,6 +17,8 @@ exports.login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
+    const tokenDoc = new Token({ token, userId: user._id, username });
+    await tokenDoc.save();
 
     const userInfo = {
       username: user.username,
