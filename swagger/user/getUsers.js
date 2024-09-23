@@ -1,5 +1,5 @@
 module.exports = {
-  "/api/user/users": {
+  "/api/user/getUsers": {
     get: {
       tags: ["User"],
       summary: "Lấy danh sách người dùng",

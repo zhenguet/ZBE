@@ -1,5 +1,5 @@
 module.exports = {
-  "/api/user/update": {
+  "/api/user/updateUser": {
     post: {
       tags: ["User"],
       summary: "Cập nhật thông tin người dùng",
