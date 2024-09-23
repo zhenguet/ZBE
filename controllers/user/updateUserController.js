@@ -1,6 +1,6 @@
 const User = require("../../models/User");
 
-exports.updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   const { email, fullName } = req.body;
   const { username } = req.user;
 
@@ -25,3 +25,5 @@ exports.updateUser = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+module.exports = { updateUser };
