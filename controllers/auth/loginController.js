@@ -1,6 +1,6 @@
-const User = require("../models/User");
+const User = require("../../models/User");
 const jwt = require("jsonwebtoken");
-const Token = require("../models/Token");
+const Token = require("../../models/Token");
 
 exports.login = async (req, res) => {
   const { username, password } = req.body;

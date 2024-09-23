@@ -1,7 +1,7 @@
 module.exports = {
-  "/api/auth/users": {
+  "/api/user/users": {
     get: {
-      tags: ["Auth"],
+      tags: ["User"],
       summary: "Lấy danh sách người dùng",
       security: [
         {

@@ -1,7 +1,7 @@
 module.exports = {
-  "/api/auth/update": {
+  "/api/user/update": {
     post: {
-      tags: ["Auth"],
+      tags: ["User"],
       summary: "Cập nhật thông tin người dùng",
       requestBody: {
         required: true,

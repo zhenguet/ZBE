@@ -1,6 +1,6 @@
-const User = require("../models/User");
+const User = require("../../models/User");
 
-exports.updateUserInfo = async (req, res) => {
+exports.updateUser = async (req, res) => {
   const { email, fullName } = req.body;
   const { username } = req.user;
 
