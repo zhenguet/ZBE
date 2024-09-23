@@ -4,6 +4,10 @@ const updateUser = async (req, res) => {
   const { email, fullName } = req.body;
   const { username } = req.user;
 
+  if (!email || !fullName) {
+    return res.status(400).json({ message: "Email and fullName are required" });
+  }
+
   try {
     const user = await User.findOneAndUpdate(
       { username: username },
