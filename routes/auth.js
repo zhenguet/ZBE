@@ -1,16 +1,29 @@
 const express = require("express");
-const registerController = require("../controllers/registerController");
-const loginController = require("../controllers/loginController");
-const logoutController = require("../controllers/logoutController");
-const updateUserInfoController = require("../controllers/updateUserInfoController");
-const getAllUsersController = require("../controllers/getAllUsersController");
+const { register } = require("../controllers/registerController");
+const { login } = require("../controllers/loginController");
+const { logout } = require("../controllers/logoutController");
+const { updateUserInfo } = require("../controllers/updateUserInfoController");
+const { getUsers } = require("../controllers/getUsersController");
 const auth = require("../middleware/auth");
 const router = express.Router();
 
-router.post("/register", registerController.register);
-router.post("/login", loginController.login);
-router.post("/logout", logoutController.logout);
-router.post("/update", auth, updateUserInfoController.updateUserInfo);
-router.get("/users", auth, getAllUsersController.getAllUsers);
+//#region DELETE methods
+
+//#endregion
+
+//#region GET methods
+router.get("/users", auth, getUsers);
+//#endregion
+
+//#region POST methods
+router.post("/register", register);
+router.post("/login", login);
+router.post("/logout", logout);
+router.post("/update", auth, updateUserInfo);
+//#endregion
+
+//#region PUT methods
+
+//#endregion
 
 module.exports = router;

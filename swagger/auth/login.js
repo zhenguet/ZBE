@@ -1,6 +1,7 @@
 module.exports = {
   "/api/auth/login": {
     post: {
+      tags: ["Auth"],
       summary: "Đăng nhập người dùng",
       requestBody: {
         required: true,

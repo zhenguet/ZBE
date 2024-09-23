@@ -2,7 +2,7 @@ const register = require("./auth/register");
 const login = require("./auth/login");
 const logout = require("./auth/logout");
 const update = require("./auth/update");
-const getAllUsers = require("./auth/getAllUsers");
+const getUsers = require("./auth/getUsers");
 
 const swaggerDocument = {
   openapi: "3.0.0",
@@ -17,11 +17,24 @@ const swaggerDocument = {
     },
   ],
   paths: {
+    //#region DELETE methods
+
+    //#endregion
+
+    //#region GET methods
+    ...getUsers,
+    //#endregion
+
+    //#region POST methods
     ...register,
     ...login,
     ...logout,
     ...update,
-    ...getAllUsers,
+    //#endregion
+
+    //#region PUT methods
+
+    //#endregion
   },
 };
 

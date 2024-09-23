@@ -1,6 +1,7 @@
 module.exports = {
   "/api/auth/register": {
     post: {
+      tags: ["Auth"],
       summary: "Đăng ký người dùng mới",
       requestBody: {
         required: true,

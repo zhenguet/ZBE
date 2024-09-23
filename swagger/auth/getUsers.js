@@ -1,7 +1,8 @@
 module.exports = {
   "/api/auth/users": {
     get: {
-      summary: "Lấy danh sách tất cả người dùng",
+      tags: ["Auth"],
+      summary: "Lấy danh sách người dùng",
       security: [
         {
           bearerAuth: [],
