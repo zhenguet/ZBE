@@ -2,7 +2,22 @@ const User = require("../../models/User");
 
 exports.register = async (req, res) => {
   const { username, password, email, fullName } = req.body;
+
+  if (!username) {
+    return res.status(400).json({ message: "Username is required" });
+  }
+  if (!password) {
+    return res.status(400).json({ message: "Password is required" });
+  }
+  if (!email) {
+    return res.status(400).json({ message: "Email is required" });
+  }
+  if (!fullName) {
+    return res.status(400).json({ message: "Full name is required" });
+  }
+
   try {
+    // Kiểm tra xem username hoặc email đã tồn tại hay chưa
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
       if (existingUser.username === username) {
