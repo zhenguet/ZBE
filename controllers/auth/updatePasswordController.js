@@ -1,5 +1,4 @@
 const User = require("../../models/User");
-const bcrypt = require("bcrypt");
 
 exports.updatePassword = async (req, res) => {
   const { oldPassword, newPassword } = req.body;
@@ -18,7 +17,7 @@ exports.updatePassword = async (req, res) => {
     }
 
     user.password = newPassword;
-    await user.save(); // Mongoose middleware sẽ tự động hash mật khẩu mới
+    await user.save();
 
     res.status(200).json({ message: "Password updated successfully" });
   } catch (error) {
