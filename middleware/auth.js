@@ -1,4 +1,4 @@
-require("dotenv").config();
+const Token = require("../models/Token");
 const jwt = require("jsonwebtoken");
 
 const secret = process.env.JWT_SECRET;
@@ -15,6 +15,11 @@ const auth = async (req, res, next) => {
   const token = authHeader.split(" ")[1];
 
   try {
+    const tokenDoc = await Token.findOne({ token });
+    if (!tokenDoc || tokenDoc.isRevoked) {
+      return res.status(401).json({ message: "Token has been revoked" });
+    }
+
     const decoded = jwt.verify(token, secret);
     req.user = decoded;
     next();

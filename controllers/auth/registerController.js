@@ -17,7 +17,6 @@ exports.register = async (req, res) => {
   }
 
   try {
-    // Kiểm tra xem username hoặc email đã tồn tại hay chưa
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
       if (existingUser.username === username) {
