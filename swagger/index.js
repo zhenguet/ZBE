@@ -14,7 +14,7 @@ const swaggerDocument = {
   },
   servers: [
     {
-      url: "https://localhost:1403/swagger/",
+      url: "https://localhost:1403/",
     },
   ],
   components: {
