@@ -1,6 +1,7 @@
 const register = require("./auth/register");
 const login = require("./auth/login");
 const logout = require("./auth/logout");
+const updatePassword = require("./auth/updatePassword");
 const updateUser = require("./user/updateUser");
 const getUsers = require("./user/getUsers");
 const deleteUser = require("./user/deleteUser");
@@ -35,6 +36,7 @@ const swaggerDocument = {
     ...register,
     ...login,
     ...logout,
+    ...updatePassword,
     ...updateUser,
     ...getUsers,
     ...deleteUser,
