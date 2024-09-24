@@ -30,24 +30,19 @@ ZBE là một ứng dụng Node.js sử dụng Express và Mongoose để cung c
 
    Cài đặt các phụ thuộc bằng lệnh:
 
-    <details>
-    <summary><strong>NPM</strong></summary>
+    ***NPM***
     
     ```bash
-    npm install
+    npm i
     ```
     
-    </details>
     
-    <details>
-    <summary><strong>Yarn</strong></summary>
+    ***Yarn***
     
     ```bash
     yarn
     ```
     
-    </details>
-
 3. **Tạo file `.env`**
 
    Tạo file `.env` tại thư mục gốc của dự án và thêm các biến môi trường sau:
@@ -58,23 +53,18 @@ ZBE là một ứng dụng Node.js sử dụng Express và Mongoose để cung c
 
    Chạy ứng dụng bằng lệnh:
 
-   <details>
-    <summary><strong>NPM</strong></summary>
+   ***NPM***
     
     ```bash
     npm start
     ```
     
-    </details>
     
-    <details>
-    <summary><strong>Yarn</strong></summary>
+    ***Yarn***
     
     ```bash
     yarn start
     ```
-    
-    </details>
 
    Ứng dụng sẽ chạy trên https://localhost:1403/swagger.
 
