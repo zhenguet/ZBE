@@ -3,6 +3,11 @@ module.exports = {
     delete: {
       tags: ["User"],
       summary: "Xóa người dùng theo username",
+      security: [
+        {
+          bearerAuth: [],
+        },
+      ],
       description:
         "Xóa người dùng dựa trên username được cung cấp trong tham số truy vấn.",
       parameters: [

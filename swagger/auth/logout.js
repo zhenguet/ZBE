@@ -3,6 +3,11 @@ module.exports = {
     post: {
       tags: ["Auth"],
       summary: "Đăng xuất người dùng",
+      security: [
+        {
+          bearerAuth: [],
+        },
+      ],
       description:
         "Đăng xuất người dùng bằng cách đánh dấu tất cả các token của họ là bị thu hồi.",
       responses: {
@@ -26,11 +31,6 @@ module.exports = {
           },
         },
       },
-      security: [
-        {
-          BearerAuth: [],
-        },
-      ],
     },
   },
   components: {
