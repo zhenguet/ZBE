@@ -66,13 +66,11 @@ ZBE là một ứng dụng Node.js sử dụng Express và Mongoose để cung c
     yarn start
     ```
 
-   Ứng dụng sẽ chạy trên https://localhost:1403/swagger.
-
 ## Tài liệu API
 
 Sau khi khởi động ứng dụng, bạn có thể truy cập tài liệu API tại:
 
-- [Swagger UI](https://localhost:3000/swagger)
+- [Swagger UI](https://localhost:1403/swagger)
 
 ## Cấu trúc dự án
 
