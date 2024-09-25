@@ -4,8 +4,12 @@ const Token = require("../../models/Token");
 
 exports.login = async (req, res) => {
   const { username, password } = req.body;
+
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({
+      $or: [{ username: username }, { email: username }],
+    });
+
     if (!user) return res.status(404).json({ message: "User not found" });
 
     const isMatch = await user.comparePassword(password);
@@ -17,7 +21,12 @@ exports.login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-    const tokenDoc = new Token({ token, userId: user._id, username });
+
+    const tokenDoc = new Token({
+      token,
+      userId: user._id,
+      username: user.username,
+    });
     await tokenDoc.save();
 
     const userInfo = {

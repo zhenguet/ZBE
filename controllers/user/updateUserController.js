@@ -9,6 +9,11 @@ const updateUser = async (req, res) => {
   }
 
   try {
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail && existingEmail.username !== username) {
+      return res.status(400).json({ message: "Email already exists" });
+    }
+
     const user = await User.findOneAndUpdate(
       { username: username },
       { email: email, fullName: fullName },
