@@ -5,6 +5,8 @@ const updatePassword = require("./auth/updatePassword");
 const updateUser = require("./user/updateUser");
 const getUsers = require("./user/getUsers");
 const deleteUser = require("./user/deleteUser");
+const addLocation = require("./attendance/addLocation");
+const checkIn = require("./location/checkIn");
 
 const swaggerDocument = {
   openapi: "3.0.0",
@@ -40,6 +42,8 @@ const swaggerDocument = {
     ...updateUser,
     ...getUsers,
     ...deleteUser,
+    ...addLocation,
+    ...checkIn,
   },
 };
 

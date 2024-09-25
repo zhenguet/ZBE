@@ -8,6 +8,8 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
+const attendanceRoutes = require("./routes/attendance");
+const locationRoutes = require("./routes/location");
 
 const app = express();
 
@@ -40,6 +42,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/attendance", attendanceRoutes);
+app.use("/api/location", locationRoutes);
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 https.createServer(sslOptions, app).listen(PORT, () => {
