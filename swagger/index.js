@@ -1,12 +1,7 @@
-const register = require("./auth/register");
-const login = require("./auth/login");
-const logout = require("./auth/logout");
-const updatePassword = require("./auth/updatePassword");
-const updateUser = require("./user/updateUser");
-const getUsers = require("./user/getUsers");
-const deleteUser = require("./user/deleteUser");
-const addLocation = require("./attendance/addLocation");
-const checkIn = require("./location/checkIn");
+const authAPIs = require("./auth");
+const userAPIs = require("./user");
+const attendanceAPIs = require("./attendance");
+const locationAPIs = require("./location");
 
 const swaggerDocument = {
   openapi: "3.0.0",
@@ -35,15 +30,10 @@ const swaggerDocument = {
     },
   ],
   paths: {
-    ...register,
-    ...login,
-    ...logout,
-    ...updatePassword,
-    ...updateUser,
-    ...getUsers,
-    ...deleteUser,
-    ...addLocation,
-    ...checkIn,
+    ...authAPIs,
+    ...userAPIs,
+    ...attendanceAPIs,
+    ...locationAPIs,
   },
 };
 
