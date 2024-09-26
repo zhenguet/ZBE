@@ -1,14 +1,15 @@
 const Location = require("../../models/Location");
 
 const addLocation = async (req, res) => {
-  const { latitude, longitude, radius } = req.body;
+  const { name, latitude, longitude, radius } = req.body;
 
-  if (!latitude || !longitude || !radius) {
+  if (!name || !latitude || !longitude || !radius) {
     return res.status(400).json({ error: "Thiếu thông tin địa điểm" });
   }
 
   try {
     const newLocation = new Location({
+      name,
       latitude,
       longitude,
       radius,

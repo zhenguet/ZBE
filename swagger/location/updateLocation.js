@@ -15,9 +15,9 @@ module.exports = {
           required: true,
           schema: {
             type: "string",
-            example: "6511c5b9b9b57f9a3e2a1112",
+            example: "64b5d55f8e85d9c16d7e18a1",
+            description: "ID của địa điểm cần cập nhật",
           },
-          description: "ID của địa điểm cần cập nhật",
         },
       ],
       requestBody: {
@@ -27,6 +27,11 @@ module.exports = {
             schema: {
               type: "object",
               properties: {
+                name: {
+                  type: "string",
+                  example: "Vị trí chính",
+                  description: "Tên của địa điểm chấm công",
+                },
                 latitude: {
                   type: "number",
                   example: 10.762622,
@@ -43,14 +48,14 @@ module.exports = {
                   description: "Bán kính cho phép tính bằng mét",
                 },
               },
-              required: ["latitude", "longitude", "radius"],
+              required: ["name", "latitude", "longitude", "radius"],
             },
           },
         },
       },
       responses: {
         200: {
-          description: "Cập nhật địa điểm thành công",
+          description: "Cập nhật địa điểm chấm công thành công",
           content: {
             "application/json": {
               schema: {
@@ -58,15 +63,16 @@ module.exports = {
                 properties: {
                   message: {
                     type: "string",
-                    example: "Cập nhật địa điểm thành công",
+                    example: "Cập nhật địa điểm chấm công thành công",
                   },
                   updatedLocation: {
                     type: "object",
                     properties: {
-                      _id: {
+                      id: {
                         type: "string",
-                        example: "6511c5b9b9b57f9a3e2a1112",
+                        example: "64b5d55f8e85d9c16d7e18a1",
                       },
+                      name: { type: "string", example: "Vị trí chính" },
                       latitude: { type: "number", example: 10.762622 },
                       longitude: { type: "number", example: 106.660172 },
                       radius: { type: "number", example: 100 },
@@ -94,13 +100,30 @@ module.exports = {
           },
         },
         404: {
-          description: "Địa điểm không tồn tại",
+          description: "Không tìm thấy địa điểm",
           content: {
             "application/json": {
               schema: {
                 type: "object",
                 properties: {
-                  error: { type: "string", example: "Địa điểm không tồn tại" },
+                  error: {
+                    type: "string",
+                    example: "Không tìm thấy địa điểm để cập nhật",
+                  },
+                },
+              },
+            },
+          },
+        },
+        500: {
+          description: "Lỗi hệ thống",
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  error: { type: "string", example: "Lỗi hệ thống" },
+                  details: { type: "string", example: "Chi tiết lỗi hệ thống" },
                 },
               },
             },

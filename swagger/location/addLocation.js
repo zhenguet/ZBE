@@ -15,6 +15,11 @@ module.exports = {
             schema: {
               type: "object",
               properties: {
+                name: {
+                  type: "string",
+                  example: "Văn phòng Hà Nội",
+                  description: "Tên địa điểm",
+                },
                 latitude: {
                   type: "number",
                   example: 10.762622,
@@ -31,7 +36,7 @@ module.exports = {
                   description: "Bán kính cho phép tính bằng mét",
                 },
               },
-              required: ["latitude", "longitude", "radius"],
+              required: ["name", "latitude", "longitude", "radius"],
             },
           },
         },
@@ -46,7 +51,7 @@ module.exports = {
                 properties: {
                   message: {
                     type: "string",
-                    example: "Thêm địa điểm chấm công thành công",
+                    example: "Thêm địa điểm thành công",
                   },
                 },
               },
@@ -84,6 +89,9 @@ module.exports = {
               },
             },
           },
+        },
+        500: {
+          description: "Lỗi hệ thống",
         },
       },
     },
