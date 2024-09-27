@@ -19,8 +19,7 @@ const sslOptions = {
 };
 
 const PORT = process.env.PORT || 3000;
-const MONGO_URI =
-  "mongodb+srv://zuet:dbZuetPassword@cluster0.yh11lns.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URI = "mongodb://localhost:27017/";
 
 mongoose
   .connect(MONGO_URI)
