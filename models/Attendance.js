@@ -1,10 +1,17 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const attendanceSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  latitude: { type: Number, required: true },
-  longitude: { type: Number, required: true },
-  timestamp: { type: Date, required: true },
+	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+	checkIn: {
+		latitude: { type: Number, required: true },
+		longitude: { type: Number, required: true },
+		timestamp: { type: Date, required: true },
+	},
+	checkOut: {
+		latitude: { type: Number },
+		longitude: { type: Number },
+		timestamp: { type: Date },
+	},
 });
 
-module.exports = mongoose.model("Attendance", attendanceSchema);
+module.exports = mongoose.model('Attendance', attendanceSchema);

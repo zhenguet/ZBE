@@ -1,5 +1,9 @@
-const checkIn = require("./checkIn");
+const checkIn = require('./checkIn');
+const checkOut = require('./checkOut');
+const getAttendance = require('./getAttendance');
 
 module.exports = {
-  ...checkIn,
+	...checkIn,
+	...checkOut,
+	...getAttendance,
 };
